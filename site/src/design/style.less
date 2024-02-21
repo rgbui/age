@@ -1,0 +1,55 @@
+.seer-design {
+    position       : absolute;
+    top            : 40px;
+    left           : 200px;
+    right          : 200px;
+    bottom         : 0px;
+    display        : flex;
+    justify-content: flex-start;
+    align-items    : stretch;
+    flex-direction : column;
+
+    &-navs {
+        display         : flex;
+        justify-content : flex-start;
+        align-items     : center;
+        height          : 30px;
+        flex-grow       : 0;
+        flex-shrink     : 0;
+        background-color: var(--seer-bg-300);
+        .seer-design-nav-item {
+            max-width      : 120px;
+            min-width      : 80px;
+            display        : flex;
+            justify-content: flex-start;
+            align-items    : center;
+            padding        : 4px 10px;
+            height         : inherit;
+            box-sizing     : border-box;
+
+            &.hover {
+                background-color: var(--seer-bg-50);
+            }
+
+            &-text {
+                flex-grow  : 1;
+                flex-shrink: 1;
+            }
+
+            .seer-icon {
+                visibility: hidden;
+            }
+
+            &:hover {
+                .seer-icon {
+                    visibility: visible;
+                }
+            }
+        }
+    }
+
+    &-task {
+        flex-grow  : 1;
+        flex-shrink: 1;
+    }
+}

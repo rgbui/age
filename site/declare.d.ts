@@ -1,0 +1,44 @@
+
+
+
+/**
+ * 打包发布的版本
+ * dev 开发版
+ * pro 正式版
+ */
+declare var MODE: 'pro' | 'dev' ;
+type ArrayOf<T> = T extends (infer p)[] ? p : never;
+
+type SvgrComponent = React.StatelessComponent<React.SVGAttributes<SVGElement>>
+
+declare module '*.svg' {
+  const content: SvgrComponent
+  export default content
+}
+
+// for style loader
+declare module '*.css' {
+  const styles: any
+  export = styles
+}
+
+declare module '*.jpg';
+declare module '*.png';
+declare module '*.jpeg';
+declare module '*.webp';
+declare module '*.gif';
+
+declare module "*.json" {
+  const file: any;
+  export default file;
+}
+
+
+/**
+ * 自动在HTMLElement上面申明一个接收拖放元素的函数
+ */
+interface HTMLElement {
+  seer_drop_move?: (type: string, data: any,event:MouseEvent) => void;
+  seer_drop_over?: (type: string, data: any,event:MouseEvent) => void;
+  seer_end?: (event:MouseEvent) => void;
+}

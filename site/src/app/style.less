@@ -1,0 +1,32 @@
+.seer-app {
+    width   : 100vw;
+    height  : 100vh;
+    position: relative;
+}
+
+.seer-task-view-menu {
+    position        : absolute;
+    top             : 40px;
+    left            : 0px;
+    bottom          : 0px;
+    width           : 200px;
+    background-color: var(--seer-bg-75);
+
+    &-head {
+        display        : flex;
+        justify-content: flex-start;
+        align-items    : center;
+        height         : 30px;
+
+        a {
+            display      : inline-block;
+            padding      : 3px 7px;
+            border-radius: 4px;
+            cursor       : pointer;
+
+            &.hover {
+                background   : var(--seer-bg-400);
+            }
+        }
+    }
+}
