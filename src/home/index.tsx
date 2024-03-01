@@ -2,6 +2,7 @@ import { observer } from "mobx-react"
 import React from "react"
 import { SlnView } from "./sln"
 import { MenuView } from "./menu"
+import { DashBoard } from "./dashboard"
 
 export var HomeView = observer(function () {
     return <div>
@@ -10,12 +11,7 @@ export var HomeView = observer(function () {
                 <SlnView></SlnView>
             </div>
             <div className="flex-auto flex flex-col">
-                <div className="flex-fixed">
-                    <MenuView></MenuView>
-                </div>
-                <div className="flex-auto">
-                    
-                </div>
+                <DashBoard></DashBoard>
             </div>
         </div>
     </div>

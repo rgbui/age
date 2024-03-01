@@ -4,7 +4,8 @@ import { View404 } from "./404";
 import { AppView } from "./app";
 import { HomeView } from "./home";
 import { AgeUrl, SyHistory } from "./history";
-import { Spin } from "rich/component/view/spin/index";
+import { Spin } from "../component/view/spin";
+
 
 export function App() {
     let [isLoad, setLoad] = React.useState(false);
@@ -25,8 +26,8 @@ export function App() {
             </Router>
         </div>
     }
-    return <div className='age-task'>
-        {!isLoad && <div className='age-task-load'>
+    return <div className='age-app'>
+        {!isLoad && <div >
             <Spin></Spin>
         </div>}
         {isLoad && renderView()}

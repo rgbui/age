@@ -3,8 +3,8 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
 var mode = 'dev';
 if (process.argv.some(s => s == '--pro')) mode = 'pro';
 else if (process.argv.some(s => s == '--beta')) mode = 'beta';
@@ -35,7 +35,9 @@ module.exports = {
     resolve: {
         extensions: ['.tsx', ".ts", ".js", ".less", ".css"],
         alias: {
-            crypto: false
+            crypto: false,
+            'react': path.resolve(__dirname, '../node_modules/react'),
+            'react-dom': path.resolve(__dirname, '../node_modules/react-dom'),
         }
     },
     module: {
@@ -83,7 +85,7 @@ module.exports = {
             }
         },
         {
-            test: /\.(jpe?g|png|gif|bmp|webp)$/,
+            test: /\.(jpe?g|png|gif|bmp|webp|ico)$/,
             type: 'asset/resource',
             generator: {
                 filename: versionPrefix + 'assert/img/[name]-[contenthash:8][ext]',
@@ -97,7 +99,7 @@ module.exports = {
             }
         },
         {
-            test: /\.(json)$/,
+            test: /\.(json|md)$/,
             type: 'asset/resource',
             generator: {
                 filename: versionPrefix + 'data/[name]-[contenthash:8][ext]',
@@ -116,21 +118,8 @@ module.exports = {
                     maxSize: 5 * 1024
                 }
             }
-        }, {
-
-            test: /\.md$/,
-            use: [
-                {
-                    loader: "html-loader",
-                },
-                {
-                    loader: "markdown-loader",
-                    options: {
-                        /* your options here */
-                    }
-                },
-            ],
-        }]
+        }
+        ]
     },
     plugins: [
         // new BundleAnalyzerPlugin(),
@@ -149,9 +138,9 @@ module.exports = {
         new webpack.DefinePlugin({
             MODE: JSON.stringify(mode)
         }),
-        new OptimizeCssAssetsPlugin({
-            assetNameRegExp: /\.css$/g,
-        }),
+        // new OptimizeCssAssetsPlugin({
+        //     assetNameRegExp: /\.css$/g,
+        // }),
         new MiniCssExtractPlugin({
             filename: versionPrefix + "assert/css/age.[contenthash:8].css"
         }),
@@ -202,10 +191,25 @@ module.exports = {
 };
 if (isDev) {
     module.exports.devServer = {
-        contentBase: path.resolve(__dirname, '../dist'),
-        host: 'localhost',
+        // contentBase: path.resolve(__dirname, '../dist'),
+        // host: 'localhost',
+        // compress: true,
+        // hot: true,
+        // port: port,
+        // open: true,
+        // historyApiFallback: {
+        //     rewrites: [
+        //         { from: /^[a-zA-Z\d\/]+$/, to: '/index.html' }
+        //     ]
+        // }
+        static: {
+            directory: path.join(__dirname, '../dist'),
+        },
+        client: {
+            progress: true,
+        },
+        host: '127.0.0.1',
         compress: true,
-        hot: true,
         port: port,
         open: true,
         historyApiFallback: {
@@ -213,5 +217,6 @@ if (isDev) {
                 { from: /^[a-zA-Z\d\/]+$/, to: '/index.html' }
             ]
         }
+
     }
 }

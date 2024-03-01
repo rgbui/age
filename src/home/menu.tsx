@@ -1,10 +1,10 @@
 import { observer } from "mobx-react"
 import React from "react"
-import { PlusSvg } from "rich/component/svgs"
-import { Avatar } from "rich/component/view/avator/face"
-import { Button } from "rich/component/view/button"
-import { Icon } from "rich/component/view/icon"
-import { S } from "rich/i18n/view"
+import { Button } from "../../component/view/button"
+import { Icon } from "../../component/view/icon"
+import { S } from "../../i18n/view"
+import { PlusSvg } from "../../component/svgs"
+
 
 export var MenuView = observer(function () {
     return <div className="flex">
