@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../../library/declare";
+import "../../../library/declare";
 import { Block } from ".";
 
 export abstract class BlockView extends React.Component<{block:Block}> {

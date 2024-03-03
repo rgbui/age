@@ -1,7 +1,7 @@
 
 
 import lodash from "lodash";
-import { BlockFactory } from "../../library/factory/block.factory";
+import { BlockFactory } from "../../../library/factory/block.factory";
 import { AgeExpress } from "./express";
 import { util } from "../../../util/util";
 import { Task } from "../task";
