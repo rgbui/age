@@ -1,37 +1,47 @@
 import React from "react";
-import { Route, Router, Switch } from "react-router";
+import { Route, Router, Routes } from "react-router";
 import { View404 } from "./404";
 import { AppView } from "./app";
 import { HomeView } from "./home";
-import { AgeUrl, SyHistory } from "./history";
+
 import { Spin } from "../component/view/spin";
+import { BrowserRouter } from "react-router-dom";
+import { user } from "./user";
 
 
-export function App() {
-    let [isLoad, setLoad] = React.useState(false);
-    async function load() {
-        setLoad(true);
+export class App extends React.Component {
+    isLoad: boolean = false;
+    componentDidMount(): void {
+        this.load()
     }
-    React.useEffect(() => {
-        load();
-    }, []);
-    function renderView() {
-        return <div className="theme-light age-app">
-            <Router history={SyHistory}>
-                <Switch>
-                    <Route path={AgeUrl.design} exact component={AppView}></Route>
-                    <Route path={AgeUrl.home} exact component={HomeView}></Route>
-                    <Route component={View404}></Route>
-                </Switch>
-            </Router>
+    async load() {
+        await user.sign();
+        this.isLoad = true;
+        this.forceUpdate()
+    }
+    render() {
+        return <div className='age-app'>
+            {!this.isLoad && <div >
+                <Spin></Spin>
+            </div>}
+            {this.isLoad && this.renderView()}
         </div>
     }
-    return <div className='age-app'>
-        {!isLoad && <div >
-            <Spin></Spin>
-        </div>}
-        {isLoad && renderView()}
-    </div>
+    renderView() {
+        return <div className="theme-light age-app">
+            <BrowserRouter >
+                <Routes >
+                    <Route path={'/design'} Component={AppView}></Route>
+                    <Route path={'/home'} Component={HomeView}></Route>
+                    <Route Component={View404}></Route>
+                </Routes>
+            </BrowserRouter>
+        </div>
+    }
+    componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
+        console.log('error', error);
+
+    }
 }
 
 

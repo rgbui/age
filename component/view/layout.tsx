@@ -1,7 +1,9 @@
 
 import React, { CSSProperties } from "react";
 
-export class Layout extends React.Component {
+export class Layout extends React.Component<{
+    children: React.ReactNode
+}> {
     render() {
         return <div className='shy-layout'>
             {React.Children.map(this.props.children, (element, index) => {
@@ -11,7 +13,7 @@ export class Layout extends React.Component {
         </div>
     }
 }
-export class Slide extends React.Component<{ width: number, props: React.ReactNode }> {
+export class Slide extends React.Component<{ width: number, props: React.ReactNode, children: React.ReactNode }> {
     render() {
         var style: CSSProperties = {
             flexShrink: 0,

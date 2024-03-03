@@ -12,6 +12,7 @@ function getCircle(size?: 24 | 16) {
 }
 
 export function Spin(props: { block?: boolean, size?: 24 | 16, children?: React.ReactNode }) {
+    console.log('xxx');
     var ov = props.children;
     var size = props.size || 16;
     if (!ov) ov = getCircle(size);

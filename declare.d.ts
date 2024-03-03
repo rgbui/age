@@ -8,9 +8,8 @@
 declare var MODE: 'pro' | 'dev' | 'beta' | 'desktop';
 declare var PLATFORM: 'web' | 'desktop' | 'mobile' | "server-side";
 declare var VERSION: string;
-declare var API_MASTER_URLS: string[];
-declare var FILE_URLS: string[];
-declare var API_URLS: string[];
+declare var API_AUTH_URLS: string[];
+declare var API_AGE_URLS: string[];
 declare var API_VERSION: string;
 declare var AUTH_URL: string;
 declare var ASSERT_URL: string;
@@ -25,7 +24,7 @@ declare var VERSION_PREFIX: string;
 
 type ArrayOf<T> = T extends (infer p)[] ? p : never;
 
-type SvgrComponent = React.StatelessComponent<React.SVGAttributes<SVGElement>>
+type SvgrComponent = React.ComponentClass<React.SVGAttributes<SVGElement>>
 
 declare module '*.svg' {
   const content: SvgrComponent

@@ -1,0 +1,104 @@
+html,
+body {
+    font-family         : 'gg sans', 'Microsoft YaHei New', 'Microsoft Yahei', 'Microsoft JhengHei', SimSun, Arial, sans-serif;
+    font-variant-numeric: tabular-nums;
+}
+
+html {
+    margin   : 0px;
+    padding  : 0px;
+    font-size: 62.5%;
+}
+
+@media (max-width: 991.98px) {
+    html {
+        font-size: 56.25%; //缩放至0.9
+    }
+}
+
+@media (max-width: 767.98px) {
+    html {
+        font-size: 50%; //缩放至0.8
+    }
+}
+
+body {
+    font-size  : 1.4rem;
+    font-weight: 400;
+    line-height: 1.5;
+    padding    : 0px;
+    margin     : 0px;
+}
+
+.ef {
+    font-family: "Segoe UI Emoji", "Segoe UI Symbol", "Segoe UI", "Apple Color Emoji", "Twemoji Mozilla", "Noto Color Emoji", "Android Emoji";
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", EmojiSymbols;
+}
+
+.shy-app {}
+
+a {
+    text-decoration: none;
+    color          : #e16259;
+    color          : #006ce7;
+}
+
+p {
+    margin: 0px;
+}
+
+i,
+em,
+b {
+    font-style : normal;
+    font-weight: normal;
+}
+
+textarea,
+input {
+    outline: none;
+}
+
+
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-track {
+    visibility: hidden;
+}
+
+::-webkit-scrollbar {
+    width : 8px;
+    height: 8px;
+}
+
+:hover::-webkit-scrollbar-thumb,
+:hover::-webkit-scrollbar-track {
+    visibility: visible;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background-clip : padding-box;
+    border          : 2px solid transparent;
+    border-radius   : 4px;
+    background-color: var(--scrollbar-thin-thumb);
+    min-height      : 40px;
+}
+
+::-webkit-scrollbar-track {
+    border-color    : var(--scrollbar-thin-track);
+    background-color: var(--scrollbar-thin-track);
+    border          : 2px solid var(--scrollbar-thin-track);
+}
+
+input,
+textarea {
+    &::placeholder {
+        font-size  : 14px;
+        font-weight: normal;
+        color      : #999;
+    }
+}

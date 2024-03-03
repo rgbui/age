@@ -1,14 +1,22 @@
 const path = require("path");
+var pkg = require('../package.json');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+var argv = (process.env.NODE_ENV || '').split(/[\s,]+/);
 // const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 // const CopyWebpackPlugin = require('copy-webpack-plugin');
 var mode = 'dev';
 if (process.argv.some(s => s == '--pro')) mode = 'pro';
 else if (process.argv.some(s => s == '--beta')) mode = 'beta';
 var isDev = mode == 'dev'
+var isUs = argv.some(s => s == '--us');
+
+
+var platform = 'web';
+if (process.argv.some(s => s == '--desktop')) platform = 'desktop';
+else if (process.argv.some(s => s == '--mobile')) platform = 'mobile';
 /**
  * webpack url https://webpack.docschina.org/guides/output-management/#cleaning-up-the-dist-folder
  */
@@ -17,12 +25,24 @@ let port = 8085;
 let publicPath = `http://localhost:${port}/`;
 if (mode == 'pro') publicPath = ``;
 
+var API_VERSION = 'v1';
+
+var API_AUTH_URLS = ['http://127.0.0.1:8888'];
+if (mode == 'beta') API_AUTH_URLS = ['https://beta-b1.shy.live'];
+else if (mode == 'pro') API_AUTH_URLS = ['https://api-m1.shy.live', 'https://api-m2.shy.live'].map(s => s.replace('shy.live', isUs ? "shy.red" : "shy.live"));
+
+var AGE_URLS = ['http://127.0.0.1:6666']
+if (mode == 'beta') AGE_URLS = ['https://beta.age.run'];
+else if (mode == 'pro') AGE_URLS = [
+    'https://api-m1.age.run',
+].map(s => s.replace('shy.live', isUs ? "shy.red" : "shy.live"));
+
 var versionPrefix = '';
 
 module.exports = {
     mode: isDev ? 'development' : 'production',
     entry: {
-        main: './src/main.tsx',
+        age: './src/main.tsx',
     },
     devtool: isDev ? 'inline-source-map' : undefined,
     output: {
@@ -118,8 +138,7 @@ module.exports = {
                     maxSize: 5 * 1024
                 }
             }
-        }
-        ]
+        }]
     },
     plugins: [
         // new BundleAnalyzerPlugin(),
@@ -129,37 +148,26 @@ module.exports = {
             filename: 'index.html',
             showErrors: true,
             hash: false,
-            chunks: ['main'],
+            chunks: ['age'],
             favicon: false,
             templateParameters: {
                 src: publicPath + versionPrefix
             },
         }),
         new webpack.DefinePlugin({
-            MODE: JSON.stringify(mode)
+            MODE: JSON.stringify(mode),
+            VERSION: JSON.stringify(pkg.version),
+            API_AUTH_URLS: JSON.stringify(API_AUTH_URLS),
+            AGE_URLS: JSON.stringify(AGE_URLS),
+            ASSERT_URL: JSON.stringify(publicPath + versionPrefix),
+            STATIC_URL: JSON.stringify(publicPath),
+            REGIN: JSON.stringify(isUs ? "US" : "CN"),
+            API_VERSION: JSON.stringify(API_VERSION),
+            PLATFORM:JSON.stringify(platform)
         }),
-        // new OptimizeCssAssetsPlugin({
-        //     assetNameRegExp: /\.css$/g,
-        // }),
         new MiniCssExtractPlugin({
             filename: versionPrefix + "assert/css/age.[contenthash:8].css"
-        }),
-        // new CopyWebpackPlugin({
-        //     patterns: [
-        //         // {
-        //         //     from: path.join(__dirname, "../src/assert/img/shy.svg"),
-        //         //     to: versionPrefix + 'assert/img/shy.fav.svg'
-        //         // },
-        //         // {
-        //         //     from: path.join(__dirname, "shared.js"),
-        //         //     to: versionPrefix + 'assert/js/shared.js'
-        //         // },
-        //         // {
-        //         //     from: path.join(__dirname, "../../rich/resources/gallery"),
-        //         //     to: versionPrefix + 'assert/gallery'
-        //         // }
-        //     ]
-        // })
+        })
     ],
     optimization: {
         moduleIds: 'deterministic',
@@ -191,17 +199,6 @@ module.exports = {
 };
 if (isDev) {
     module.exports.devServer = {
-        // contentBase: path.resolve(__dirname, '../dist'),
-        // host: 'localhost',
-        // compress: true,
-        // hot: true,
-        // port: port,
-        // open: true,
-        // historyApiFallback: {
-        //     rewrites: [
-        //         { from: /^[a-zA-Z\d\/]+$/, to: '/index.html' }
-        //     ]
-        // }
         static: {
             directory: path.join(__dirname, '../dist'),
         },
@@ -217,6 +214,5 @@ if (isDev) {
                 { from: /^[a-zA-Z\d\/]+$/, to: '/index.html' }
             ]
         }
-
     }
 }

@@ -158,7 +158,7 @@ export function Icon(props: {
             , ...(props.style || {})
         })
         return <span onClick={e => { props.onClick ? props.onClick(e) : undefined; }}
-            onMouseDown={e => { props.onMousedown ? props.onMousedown(e) : undefined }} className={classList.join(" ")} style={style}>{props.icon}</span>
+            onMouseDown={e => { props.onMousedown ? props.onMousedown(e) : undefined }} className={classList.join(" ")} style={style}>{props.icon as any}</span>
     }
 }
 
