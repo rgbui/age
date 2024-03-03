@@ -31,9 +31,9 @@ var API_AUTH_URLS = ['http://127.0.0.1:8888'];
 if (mode == 'beta') API_AUTH_URLS = ['https://beta-b1.shy.live'];
 else if (mode == 'pro') API_AUTH_URLS = ['https://api-m1.shy.live', 'https://api-m2.shy.live'].map(s => s.replace('shy.live', isUs ? "shy.red" : "shy.live"));
 
-var AGE_URLS = ['http://127.0.0.1:6666']
-if (mode == 'beta') AGE_URLS = ['https://beta.age.run'];
-else if (mode == 'pro') AGE_URLS = [
+var API_AGE_URLS = ['http://127.0.0.1:6666']
+if (mode == 'beta') API_AGE_URLS = ['https://beta.age.run'];
+else if (mode == 'pro') API_AGE_URLS = [
     'https://api-m1.age.run',
 ].map(s => s.replace('shy.live', isUs ? "shy.red" : "shy.live"));
 
@@ -158,7 +158,7 @@ module.exports = {
             MODE: JSON.stringify(mode),
             VERSION: JSON.stringify(pkg.version),
             API_AUTH_URLS: JSON.stringify(API_AUTH_URLS),
-            AGE_URLS: JSON.stringify(AGE_URLS),
+            API_AGE_URLS: JSON.stringify(API_AGE_URLS),
             ASSERT_URL: JSON.stringify(publicPath + versionPrefix),
             STATIC_URL: JSON.stringify(publicPath),
             REGIN: JSON.stringify(isUs ? "US" : "CN"),

@@ -103,7 +103,6 @@ class User {
                 return;
             }
         }
-        await sCache.set(CacheKey.finger, cacFinger);
         var r = await authSock.put<{ deviceId: string }, string>('/device/sign', {
             finger: cacFinger,
             platform: window.ageConfig.platform,
@@ -113,6 +112,7 @@ class User {
             cpu: UA.cpu,
             deviceId: devideId || undefined
         });
+        await sCache.set(CacheKey.finger, cacFinger);
         await sCache.set(CacheKey.device, r.data.deviceId);
     }
     async sign() {
@@ -206,4 +206,4 @@ class User {
 }
 
 
-export var user = new User();
+export var signUser = new User();

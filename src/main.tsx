@@ -13,6 +13,6 @@ import { configure } from "mobx";
 configure({ enforceActions: 'never' });
 import { App } from ".";
 ReactDOM.render(
-    <div><App></App></div>,
+    <App></App>,
     document.body.appendChild(document.createElement('div')),
 )

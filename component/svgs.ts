@@ -13,32 +13,6 @@ import ArrowZoomSvg from "../src/assert/svg/arrowZoom.svg";
 import AudioSvg from "../src/assert/svg/audio.svg";
 import BillingSvg from "../src/assert/svg/billing.svg";
 import BlockcolorSvg from "../src/assert/svg/blockcolor.svg";
-import BoardArrowCurveSvg from "../src/assert/svg/board.arrow.curve.svg";
-import BoardArrowFilletSvg from "../src/assert/svg/board.arrow.fillet.svg";
-import BoardArrowNoneSvg from "../src/assert/svg/board.arrow.none.svg";
-import BoardArrowPointerSvg from "../src/assert/svg/board.arrow.pointer.svg";
-import BoardArrowPolylineSvg from "../src/assert/svg/board.arrow.polyline.svg";
-import BoardArrowSvg from "../src/assert/svg/board.arrow.svg";
-import BoardCardSvg from "../src/assert/svg/board.card.svg";
-import BoardFrame11Svg from "../src/assert/svg/board.frame.11.svg";
-import BoardFrame169Svg from "../src/assert/svg/board.frame.169.svg";
-import BoardFrame34Svg from "../src/assert/svg/board.frame.34.svg";
-import BoardFrame43Svg from "../src/assert/svg/board.frame.43.svg";
-import BoardFrameA4Svg from "../src/assert/svg/board.frame.a4.svg";
-import BoardFramePadSvg from "../src/assert/svg/board.frame.pad.svg";
-import BoardFramePhoneSvg from "../src/assert/svg/board.frame.phone.svg";
-import BoardFrameWebSvg from "../src/assert/svg/board.frame.web.svg";
-import BoardIconSvg from "../src/assert/svg/board.icon.svg";
-import BoardIconTextStylesSvg from "../src/assert/svg/board.icon.text.styles.svg";
-import BoardMoveBottomSvg from "../src/assert/svg/board.move.bottom.svg";
-import BoardMoveTopSvg from "../src/assert/svg/board.move.top.svg";
-import BoardRefreshSvg from "../src/assert/svg/board.refresh.svg";
-import BoardToolArrowSvg from "../src/assert/svg/board.tool.arrow.svg";
-import BoardToolFrameSvg from "../src/assert/svg/board.tool.frame.svg";
-import BoardToolMeiSvg from "../src/assert/svg/board.tool.mei.svg";
-import BoardToolSharpSvg from "../src/assert/svg/board.tool.sharp.svg";
-import BoardToolStickerSvg from "../src/assert/svg/board.tool.sticker.svg";
-import BoardToolTextSvg from "../src/assert/svg/board.tool.text.svg";
 import BookSvg from "../src/assert/svg/book.svg";
 import BrainSvg from "../src/assert/svg/brain.svg";
 import BrokenLineSvg from "../src/assert/svg/brokenLine.svg";
@@ -126,11 +100,6 @@ import ForbidSvg from "../src/assert/svg/forbid.svg";
 import FourLeavesSvg from "../src/assert/svg/four.leaves.svg";
 import FriendsSvg from "../src/assert/svg/friends.svg";
 import GlobalLinkSvg from "../src/assert/svg/globalLink.svg";
-import HSvg from "../src/assert/svg/h.svg";
-import H1Svg from "../src/assert/svg/h1.svg";
-import H2Svg from "../src/assert/svg/h2.svg";
-import H3Svg from "../src/assert/svg/h3.svg";
-import H4Svg from "../src/assert/svg/h4.svg";
 import HelpSvg from "../src/assert/svg/help.svg";
 import HideSvg from "../src/assert/svg/hide.svg";
 import HorizontalDistributionSvg from "../src/assert/svg/horizontalDistribution.svg";
@@ -206,25 +175,6 @@ import TransparentSvg from "../src/assert/svg/transparent.svg";
 import TrashSvg from "../src/assert/svg/trash.svg";
 import TreeListSvg from "../src/assert/svg/treeList.svg";
 import TriangleSvg from "../src/assert/svg/triangle.svg";
-import TypesButtonSvg from "../src/assert/svg/types.button.svg";
-import TypesCheckboxSvg from "../src/assert/svg/types.checkbox.svg";
-import TypesCreateAtSvg from "../src/assert/svg/types.create.at.svg";
-import TypesCreateBySvg from "../src/assert/svg/types.create.by.svg";
-import TypesDateSvg from "../src/assert/svg/types.date.svg";
-import TypesEmailSvg from "../src/assert/svg/types.email.svg";
-import TypesFileSvg from "../src/assert/svg/types.file.svg";
-import TypesFormulaSvg from "../src/assert/svg/types.formula.svg";
-import TypesLinkSvg from "../src/assert/svg/types.link.svg";
-import TypesMultipleSelectSvg from "../src/assert/svg/types.multiple.select.svg";
-import TypesNumberSvg from "../src/assert/svg/types.number.svg";
-import TypesPersonSvg from "../src/assert/svg/types.person.svg";
-import TypesPhoneSvg from "../src/assert/svg/types.phone.svg";
-import TypesRelationSvg from "../src/assert/svg/types.relation.svg";
-import TypesRollupSvg from "../src/assert/svg/types.rollup.svg";
-import TypesSelectSvg from "../src/assert/svg/types.select.svg";
-import TypesSortSvg from "../src/assert/svg/types.sort.svg";
-import TypesStringSvg from "../src/assert/svg/types.string.svg";
-import TypesTitleSvg from "../src/assert/svg/types.title.svg";
 import UndoSvg from "../src/assert/svg/undo.svg";
 import UnlockSvg from "../src/assert/svg/unlock.svg";
 import UnpaySvg from "../src/assert/svg/unpay.svg";
@@ -234,6 +184,7 @@ import UpSvg from "../src/assert/svg/up.svg";
 import UploadSvg from "../src/assert/svg/upload.svg";
 import VersionHistorySvg from "../src/assert/svg/versionHistory.svg";
 import VideoSvg from "../src/assert/svg/video.svg";
+import WechatSvg from "../src/assert/svg/wechat.svg";
 import WordSvg from "../src/assert/svg/word.svg";
 import WsSettingsSvg from "../src/assert/svg/wsSettings.svg";
 
@@ -253,32 +204,6 @@ ArrowZoomSvg,
 AudioSvg,
 BillingSvg,
 BlockcolorSvg,
-BoardArrowCurveSvg,
-BoardArrowFilletSvg,
-BoardArrowNoneSvg,
-BoardArrowPointerSvg,
-BoardArrowPolylineSvg,
-BoardArrowSvg,
-BoardCardSvg,
-BoardFrame11Svg,
-BoardFrame169Svg,
-BoardFrame34Svg,
-BoardFrame43Svg,
-BoardFrameA4Svg,
-BoardFramePadSvg,
-BoardFramePhoneSvg,
-BoardFrameWebSvg,
-BoardIconSvg,
-BoardIconTextStylesSvg,
-BoardMoveBottomSvg,
-BoardMoveTopSvg,
-BoardRefreshSvg,
-BoardToolArrowSvg,
-BoardToolFrameSvg,
-BoardToolMeiSvg,
-BoardToolSharpSvg,
-BoardToolStickerSvg,
-BoardToolTextSvg,
 BookSvg,
 BrainSvg,
 BrokenLineSvg,
@@ -366,11 +291,6 @@ ForbidSvg,
 FourLeavesSvg,
 FriendsSvg,
 GlobalLinkSvg,
-HSvg,
-H1Svg,
-H2Svg,
-H3Svg,
-H4Svg,
 HelpSvg,
 HideSvg,
 HorizontalDistributionSvg,
@@ -446,25 +366,6 @@ TransparentSvg,
 TrashSvg,
 TreeListSvg,
 TriangleSvg,
-TypesButtonSvg,
-TypesCheckboxSvg,
-TypesCreateAtSvg,
-TypesCreateBySvg,
-TypesDateSvg,
-TypesEmailSvg,
-TypesFileSvg,
-TypesFormulaSvg,
-TypesLinkSvg,
-TypesMultipleSelectSvg,
-TypesNumberSvg,
-TypesPersonSvg,
-TypesPhoneSvg,
-TypesRelationSvg,
-TypesRollupSvg,
-TypesSelectSvg,
-TypesSortSvg,
-TypesStringSvg,
-TypesTitleSvg,
 UndoSvg,
 UnlockSvg,
 UnpaySvg,
@@ -474,6 +375,7 @@ UpSvg,
 UploadSvg,
 VersionHistorySvg,
 VideoSvg,
+WechatSvg,
 WordSvg,
 WsSettingsSvg
 }
