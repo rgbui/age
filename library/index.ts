@@ -1,2 +1,2 @@
 import "./declare";
-import "../src/app/block/base";
+import "../src/app/block/view";

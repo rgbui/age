@@ -1,3 +1,5 @@
+import { util } from "../../../util/util";
+
 /**
  * 表达式
  * 特指 常量、变量、运算表达式、函数计算
@@ -5,11 +7,53 @@
  * 
  */
 export class AgeExpress {
+    constructor(props) {
+        if (props) this.load(props);
+    }
+    load(props) {
+        for (let n in props) {
+            if (n == 'args') {
+                this.args = props[n].map(c => new AgeExpress(c))
+            }
+            else this[n] = props[n];
+        }
+    }
+    get() {
+        return {
+            name: this.name,
+            text: this.text,
+            id: this.id,
+            type: this.type,
+            types: this.types,
+            type_url: this.type_url,
+            unit_type: this.unit_type,
+            express_text: this.express_text,
+            express: this.express,
+            cacValue: undefined,
+            value: this.value,
+            defaultValue: this.defaultValue,
+            description: this.description,
+            args: this.args ? this.args.map(p => p.get()) : undefined,
+            out: this.out,
+            variable_name: this.variable_name,
+            options: this.options,
+            remark: this.remark
+        }
+    }
     text?: string;
+    /**
+     * 当前command中的参数名，概念唯一
+     */
     name: string;
     required?: boolean;
-    id?: string;
+    id: string = util.guid();
+    /**
+     * 参数类型
+     */
     type?: AgeDataType;
+    /**
+     * 参数类型，如果支持多种类型，那么types是一个数组
+     */
     types?: AgeDataType[];
     /**
      * 自定义的类型，该类型与具体的执行环境对象是相关的
@@ -21,6 +65,10 @@ export class AgeExpress {
      * 那么unit_type是数组的元素类型
      */
     unit_type?: string;
+    /**
+     * 界面用户输入的表达式文本
+     */
+    express_text?: string;
     /**
      * 计算表达式
      */
@@ -45,19 +93,20 @@ export class AgeExpress {
 
     args?: AgeExpress[]
     /**
-     * 是否是返回的变量
+     * 是否是返回的参数
      */
     out?: boolean;
 
     /**
-     * 变量名
-     * 建议使用variable_name
-     * 如果没有，使用name
+     * 如果是返回的参数，
+     * 那么需要指定返回的变量名
+     * 如有variable_name，则使用variable_name
+     * 否则使用name
      */
     variable_name?: string
 
     /**
-     * 参数取值的枚举
+     * 参数取值的枚举约束
      */
     options?: { text: string, value: any }[];
 

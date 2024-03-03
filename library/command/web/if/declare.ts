@@ -5,7 +5,7 @@ import { WebElementTypes } from "../declare";
 
 declare([
     {
-        url: '/age/web/if_visible',
+        url: '/age/web/if/visible',
         text: '如果元素可见',
         args: [
             { name: 'webPage', text: '页面', type_url: '/age/web/webPage' },
@@ -15,7 +15,7 @@ declare([
         ]
     },
     {
-        url: '/age/web/if_contains',
+        url: '/age/web/if/contains',
         text: '如果元素存在',
         args: [
             { name: 'webPage', text: '页面', type_url: '/age/web/webPage' },

@@ -1,13 +1,14 @@
 import React from "react";
-import { Route, Router, Routes } from "react-router";
+import { Route, Routes } from "react-router";
 import { View404 } from "./404";
 import { AppView } from "./app";
 import { HomeView } from "./home";
 
 import { Spin } from "../component/view/spin";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from 'react-router-use-history'
+import { ageHistory } from './age-history'
 import { signUser } from "./user";
-import { AgeUrl, UrlRoute } from "./history";
+import { AgeUrl, UrlRoute } from "./age-history";
 import { Login } from "./user/sign/in";
 import { LogOut } from "./user/sign/out";
 
@@ -27,6 +28,7 @@ export class App extends React.Component {
         else {
             UrlRoute.redict(AgeUrl.signIn)
         }
+        this.forceUpdate();
     }
     render() {
         return <div className='age-app'>
@@ -38,7 +40,7 @@ export class App extends React.Component {
     }
     renderView() {
         return <div className="theme-light age-app">
-            <BrowserRouter >
+            <BrowserRouter history={ageHistory}>
                 <Routes>
                     <Route path={AgeUrl.flow} Component={AppView}></Route>
                     <Route path={AgeUrl.home} Component={HomeView}></Route>

@@ -1,4 +1,4 @@
-import { BlockRun, BlockView } from "../../src/app/block/base";
+import { BlockRun, BlockView } from "../../src/app/block/view";
 import { BlockData } from "./observable";
 
 export class BlockFactory {

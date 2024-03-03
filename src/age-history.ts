@@ -1,9 +1,8 @@
-// import { createBrowserHistory } from "history";
-
+import { createBrowserHistory } from 'history'
+export const ageHistory = createBrowserHistory()
 import { generatePath, matchPath } from "react-router";
 import { config } from "./common/config";
-// import { redirect } from "react-router-dom";
-// export const SyHistory = createBrowserHistory()
+
 export function currentParams(routePath: string): Record<string, any> {
     var r = matchPath({
         caseSensitive: true,
@@ -21,11 +20,11 @@ export var UrlRoute = {
         if (url) {
             if (!url.startsWith('/')) url = '/' + url;
             if (config.isDev || config.isBeta) return url;
-            else return config.isUS ? 'https://shy.red' + url : 'https://shy.live' + url;
+            else return config.isUS ? 'https://age.run' + url : 'https://age.run' + url;
         }
         else {
             if (config.isDev || config.isBeta) return '/';
-            return config.isUS ? 'https://shy.red' : 'https://shy.live'
+            return config.isUS ? 'https://age.run' : 'https://age.run'
         }
     },
     getHost() {
@@ -44,13 +43,10 @@ export var UrlRoute = {
                 return location.href = UrlRoute.getUrl() + url
             }
         }
-        history.pushState(state||{}, '', UrlRoute.getUrl(url));
-        // redirect(url,state)
+        ageHistory.push(UrlRoute.getUrl(url), state)
     },
     redict(url: string | AgeUrl, state?: Record<string, any>) {
-        console.log(state||{}, '', UrlRoute.getUrl(url));
-        history.pushState(state||{}, '', UrlRoute.getUrl(url));
-        // redirect(url,state)
+        ageHistory.push(UrlRoute.getUrl(url), state)
     },
     isMatch(url: AgeUrl) {
         return currentParams(url) ? true : false;
@@ -59,7 +55,7 @@ export var UrlRoute = {
         return currentParams(url);
     },
     gen(url: AgeUrl, params: Record<string, any>) {
-        return generatePath(url, params);
+        return generatePath(url, params as any);
     }
 }
 
@@ -69,8 +65,7 @@ export enum AgeUrl {
     flow = '/flow',
     signOut = '/sign/out',
     signIn = '/sign/in',
-
-
+    task='/task/:id',
     workCreate = '/work/create',
     _404 = '/404',
 

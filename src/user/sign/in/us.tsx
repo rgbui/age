@@ -14,8 +14,10 @@ import { lst } from "../../../../i18n/store";
 import { Input } from "../../../../component/view/input";
 import { S, Sp } from "../../../../i18n/view";
 import { CacheKey, sCache } from "../../../../net/cache";
-import { AgeUrl } from "../../../history";
+import { AgeUrl } from "../../../age-history";
 import { EmailRegex } from "../../../common";
+import { signUser } from "../..";
+
 
 @observer
 export class UsLogin extends React.Component<{ call?: () => void }> {
@@ -289,8 +291,8 @@ export class UsLogin extends React.Component<{ call?: () => void }> {
     }
     async success(token: string, user: Record<string, any>) {
         await sCache.set(CacheKey.token, token, 180, 'd');
-        user.syncUserInfo(user);
-        await user.createTim();
+        signUser.syncUserInfo(user);
+        await signUser.createTim();
         if (typeof this.props.call == 'function') {
             this.props.call();
         }

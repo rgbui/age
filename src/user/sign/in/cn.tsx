@@ -16,7 +16,7 @@ import { S, Sp } from "../../../../i18n/view";
 import { sCache, CacheKey } from "../../../../net/cache";
 import { EmailRegex, PhoneRegex } from "../../../common";
 import { config } from "../../../common/config";
-import { AgeUrl, UrlRoute } from "../../../history";
+import { AgeUrl, UrlRoute } from "../../../age-history";
 import { authSock } from "../../../../net/sock";
 import { signUser } from "../..";
 import { WechatSvg } from "../../../../component/svgs";
@@ -353,8 +353,8 @@ export class CnLogin extends React.Component<{ call?: () => void }> {
     async success(token: string, user: Record<string, any>, isRedict: boolean = true, isSign: boolean = true) {
         if (isSign) {
             await sCache.set(CacheKey.token, token, 180, 'd');
-            user.syncUserInfo(user);
-            await user.createTim();
+            signUser.syncUserInfo(user);
+            await signUser.createTim();
         }
         if (isRedict) {
             if (typeof this.props.call == 'function') this.props.call()
@@ -460,9 +460,9 @@ export class CnLogin extends React.Component<{ call?: () => void }> {
         return <div className={'shy-login desk-no-drag' + (isMobileOnly ? "  border-box vw100-c40" : " w-350")} >
             <div className="text-center gap-b-10 error"><S>需要邀请码才能注册</S></div>
             <div className='shy-login-head'>
-                {!['login', 'register', 'setName'].includes(local.step) && <span><S>登录/注册</S>&nbsp;<S>诗云</S></span>}
-                {local.step == 'register' && <span><S>注册</S>&nbsp;<S>诗云</S></span>}
-                {local.step == 'login' && <span><S>登录</S>&nbsp;<S>诗云</S></span>}
+                {!['login', 'register', 'setName'].includes(local.step) && <span><S>登录/注册</S>&nbsp;<S>Age</S></span>}
+                {local.step == 'register' && <span><S>注册</S>&nbsp;<S>Age</S></span>}
+                {local.step == 'login' && <span><S>登录</S>&nbsp;<S>Age</S></span>}
                 {local.step == 'setName' && <span><S>完善个人信息</S></span>}
             </div>
             {local.step == 'input' && this.renderInputEmail()}

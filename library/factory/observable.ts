@@ -21,7 +21,7 @@ export type BlockData = {
     url: string,
     text?: string,
     description?: string,
-    args: AgeExpress[]
+    args:Partial<AgeExpress>[]
 }
 
 export function declare(data: BlockData | BlockData[]) {

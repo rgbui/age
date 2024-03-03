@@ -8,7 +8,7 @@ import shortUUID from 'short-uuid';
 
 export var util = {
     guid() {
-        return shortUUID.generate();
+        return shortUUID.generate().toString();
     },
     clone<T>(json: T): T {
         return lodash.cloneDeep(json);
