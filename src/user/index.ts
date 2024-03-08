@@ -16,6 +16,18 @@ export enum UserStatus {
     hidden = 4,
 }
 
+export type UserBasic = {
+    id: string,
+    avatar?: ResourceArguments,
+    cover?: IconArguments,
+    role: 'user' | 'robot',
+    sn?: number,
+    name: string,
+    status?: UserStatus,
+    online?: boolean,
+    slogan?: string
+}
+
 class User {
     public id: string = null;
     public sn: number = null;

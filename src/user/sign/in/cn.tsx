@@ -365,7 +365,7 @@ export class CnLogin extends React.Component<{ call?: () => void }> {
                 if (back) {
                     location.href = back;
                 }
-                else return UrlRoute.push(AgeUrl.home);
+                else return UrlRoute.push(AgeUrl.dashboard);
             }
         }
     }

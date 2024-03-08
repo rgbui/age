@@ -1,6 +1,5 @@
 
 
-
 export type SearchListType<T = any, G ={}> = {
     list: T[],
     lastDate?:Date,
@@ -11,3 +10,4 @@ export type SearchListType<T = any, G ={}> = {
     word?: string,
     error?: string
 } & G
+

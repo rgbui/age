@@ -301,7 +301,7 @@ export class UsLogin extends React.Component<{ call?: () => void }> {
             var url = new URL(window.location.href);
             var back = url.searchParams.get('back');
             if (back) location.href=back; 
-            else location.href=AgeUrl.home;
+            else location.href=AgeUrl.dashboard;
         }
     }
     render() {
