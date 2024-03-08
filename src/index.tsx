@@ -11,6 +11,7 @@ import { signUser } from "./user";
 import { AgeUrl, UrlRoute } from "./age-history";
 import { Login } from "./user/sign/in";
 import { LogOut } from "./user/sign/out";
+import { renderAvatorStatusSvgMask } from "./user/avator/status";
 
 
 export class App extends React.Component {
@@ -23,7 +24,7 @@ export class App extends React.Component {
         this.isLoad = true;
         console.log('signUser.isSign', signUser)
         if (signUser.isSign) {
-            UrlRoute.redict(AgeUrl.home);
+            UrlRoute.redict(AgeUrl.dashboard);
         }
         else {
             UrlRoute.redict(AgeUrl.signIn)
@@ -32,6 +33,7 @@ export class App extends React.Component {
     }
     render() {
         return <div className='age-app'>
+             {renderAvatorStatusSvgMask()}
             {!this.isLoad && <div >
                 <Spin></Spin>
             </div>}
@@ -43,7 +45,7 @@ export class App extends React.Component {
             <BrowserRouter history={ageHistory}>
                 <Routes>
                     <Route path={AgeUrl.flow} Component={AppView}></Route>
-                    <Route path={AgeUrl.home} Component={HomeView}></Route>
+                    <Route path={AgeUrl.dashboard} Component={HomeView}></Route>
                     <Route path={AgeUrl.signIn} Component={Login}></Route>
                     <Route path={AgeUrl.signOut} Component={LogOut}></Route>
                     <Route Component={View404}></Route>

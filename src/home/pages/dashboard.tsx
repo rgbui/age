@@ -1,5 +1,5 @@
 import React from "react";
-import { MenuView } from "./menu";
+import { MenuView } from "../view/menu";
 
 
 

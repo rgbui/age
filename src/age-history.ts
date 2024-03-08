@@ -61,7 +61,9 @@ export var UrlRoute = {
 
 export enum AgeUrl {
     root = '/',
-    home = '/home',
+    dashboard = '/dashboard',
+    skills = '/skills',
+    shop='/shop',
     flow = '/flow',
     signOut = '/sign/out',
     signIn = '/sign/in',
