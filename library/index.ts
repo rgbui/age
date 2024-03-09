@@ -1,2 +1,2 @@
 import "./declare";
-import "../src/app/block/view";
+import "../src/flow/block/view";

@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router";
 import { View404 } from "./404";
-import { AppView } from "./app";
-import { HomeView } from "./home";
+import { FlowView } from "./flow";
+import { DashBoardMainView } from "./dashboard";
 
 import { Spin } from "../component/view/spin";
 import { BrowserRouter } from 'react-router-use-history'
@@ -33,7 +33,7 @@ export class App extends React.Component {
     }
     render() {
         return <div className='age-app'>
-             {renderAvatorStatusSvgMask()}
+            {renderAvatorStatusSvgMask()}
             {!this.isLoad && <div >
                 <Spin></Spin>
             </div>}
@@ -44,8 +44,12 @@ export class App extends React.Component {
         return <div className="theme-light age-app">
             <BrowserRouter history={ageHistory}>
                 <Routes>
-                    <Route path={AgeUrl.flow} Component={AppView}></Route>
-                    <Route path={AgeUrl.dashboard} Component={HomeView}></Route>
+                    <Route path={AgeUrl.flow} Component={FlowView}></Route>
+
+                    <Route path={'/dashboard/*'} Component={DashBoardMainView}></Route>
+                    
+                    <Route path={AgeUrl.flow} Component={FlowView}></Route>
+
                     <Route path={AgeUrl.signIn} Component={Login}></Route>
                     <Route path={AgeUrl.signOut} Component={LogOut}></Route>
                     <Route Component={View404}></Route>
