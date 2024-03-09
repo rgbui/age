@@ -1,4 +1,4 @@
-import { AgeDataType } from "../../../../src/app/block/express";
+import { AgeDataType } from "../../../../src/flow/block/express";
 import { declare } from "../../../factory/observable";
 
 /**
@@ -7,6 +7,7 @@ import { declare } from "../../../factory/observable";
 declare([{
     url: '/age/string/length',
     text: '获取文本长度',
+    viewTemplate: `获取文本{text}的长度，将文本的长度保存至{text_length}`,
     args: [
         {
             name: 'text',
@@ -26,6 +27,7 @@ declare([{
     url: '/age/string/match',
     text: "提取文本内容",
     description: '提取文本中的内容',
+    viewTemplate: `从文本{text}中提取{pattern}，将内容保存至{content}`,
     args: [
         {
             name: 'text',
