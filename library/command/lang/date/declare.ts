@@ -25,7 +25,8 @@ declare([
                     { text: '日', value: 'day' },
                     { text: '时', value: 'hour' },
                     { text: '分', value: 'minute' },
-                    { text: '秒', value: 'second' }]
+                    { text: '秒', value: 'second' }
+                ]
             },
             {
                 name: 'number',
@@ -43,7 +44,8 @@ declare([
             { name: 'start', text: '开始时间', type: AgeDataType.date },
             { name: 'end', text: '结束时间', type: AgeDataType.date },
             {
-                name: 'unit', text: '单位', type: AgeDataType.text, options: [
+                name: 'unit', text: '单位', type: AgeDataType.text,
+                options: [
                     { text: '年', value: 'year' },
                     { text: '月', value: 'month' },
                     { text: '日', value: 'day' },
