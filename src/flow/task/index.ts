@@ -1,16 +1,29 @@
+import React from "react";
 import { Block } from "../block";
 import { AgeExpress } from "../block/express";
+import { makeObservable, observable } from "mobx";
+import { util } from "../../../util/util";
 
 export class Task {
-    id: string;
-    text: string;
-    description: string;
-    creater: string;
+    id: string = util.guid();
+    text: string = '';
+    description: string = '';
+    creater: string = '';
     createDate: number = new Date().getTime();
-    blocks: Block[];
+    blocks: Block[] = [];
     args: AgeExpress[] = [];
-    constructor(options) {
+    constructor(options)
+    {
         if (options) this.load(options);
+        makeObservable(this,{
+            id: observable,
+            text: observable,
+            description: observable,
+            creater: observable,
+            createDate: observable,
+            blocks: observable,
+            args: observable
+        })
     }
     load(data: Record<string, any>) {
         if (!data) data = {};
@@ -35,4 +48,8 @@ export class Task {
             blocks: this.blocks.map(p => p.get())
         }
     }
+    onSelect(block: Block, event: React.MouseEvent) {
+
+    }
+
 }

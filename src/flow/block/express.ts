@@ -42,9 +42,13 @@ export class AgeExpress {
     }
     text?: string;
     /**
-     * 当前command中的参数名，概念唯一
+     * 表达式的name，参数
      */
     name: string;
+    /**
+     * 参数名,跟blockData里面的arg name - - 一致
+     */
+    prop?: string;
     required?: boolean;
     id: string = util.guid();
     /**

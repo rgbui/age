@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "../../../../component/view/button";
+import { AgeUrl, UrlRoute } from "../../../age-history";
 
 export class SkillsView extends React.Component {
     render() {
@@ -12,6 +13,6 @@ export class SkillsView extends React.Component {
         </div>
     }
     createSkill() {
-
+        UrlRoute.push(AgeUrl.flow);
     }
 }

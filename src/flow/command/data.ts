@@ -6,7 +6,7 @@ export type CommandItemType = {
     icon?: any,
     childs?: CommandItemType[],
     url?: string,
-    spread?:boolean
+    spread?: boolean
 
 }
 
@@ -17,6 +17,7 @@ export function getCommands(): CommandItemType[] {
         {
             text: lst('条件判断'),
             icon: PlusSvg,
+            spread: true,
             childs: [
                 {
                     url: '/age/if',

@@ -21,7 +21,7 @@ export var SlnView = observer(function () {
                 <div onMouseDown={e => {
                     UrlRoute.push(AgeUrl.dashboard)
                 }}>
-                    <Icon size={20} icon={{ name: 'byte', code: 'home' }}></Icon>
+                    <Icon size={20} icon={{ name: 'byte', code: 'workbench' }}></Icon>
                 </div>
                 <div onMouseDown={e => {
                     UrlRoute.push(AgeUrl.dashboard, { lately: true })

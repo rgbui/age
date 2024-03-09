@@ -14,18 +14,15 @@ export class Block {
     flows: Block[] = [];
     flows1: Block[] = [];
     creater: string;
-    createDate: number= new Date().getTime();
+    createDate: number = new Date().getTime();
     constructor(task: Task, options, parent?: Block) {
         if (parent) this.parent = parent;
         if (options) this.load(options);
     }
     parent: Block;
     id: string = util.guid();
-    get BlockView() {
-        return BlockFactory.getView(this.url)
-    }
     prop(name: string): AgeExpress {
-        return this.args.find(g => g.name == name);
+        return this.args.find(g => g.prop == name);
     }
     load(data: Record<string, any>) {
         if (!data) data = {};
@@ -33,7 +30,7 @@ export class Block {
             if (n.startsWith('flows')) {
                 this[n] = data[n].map(c => new Block(this.task, c, this))
             }
-            else this[n] = data[n];
+            else this[n] = lodash.cloneDeep(data[n]);
         }
     }
     get() {
@@ -46,5 +43,31 @@ export class Block {
             flows: this.flows.map(p => p.get()),
             flows1: this.flows1.map(p => p.get())
         }
+    }
+    getBlockData() {
+        var bd = BlockFactory.getBlock(this.url);
+        return bd;
+    }
+    getTemplates() {
+        var bd = this.getBlockData();
+        var vt = typeof bd.viewTemplate == 'function' ? bd.viewTemplate(this) : bd.viewTemplate;
+        var ps: { name?: string, text?: string }[] = [];
+        var regex = /{([^}]+)}/g;
+        var match;
+        var lastIndex = 0;
+        while ((match = regex.exec(vt)) !== null) {
+            var textBefore = vt.substring(lastIndex, match.index);
+            if (textBefore) {
+                ps.push({ text: textBefore });
+            }
+            var variableName = match[1];
+            ps.push({ name: variableName });
+            lastIndex = match.index + match[0].length;
+        }
+        var textAfter = vt.substring(lastIndex);
+        if (textAfter) {
+            ps.push({ text: textAfter });
+        }
+        return ps;
     }
 }
